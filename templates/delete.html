@@ -1,0 +1,31 @@
+<!doctype html>
+<html style="height:100%;background-color:#ffffff">
+   <script>
+   </script>
+   <head>
+      <title>Cancellazione utente</title>
+      <link rel="stylesheet" href="../static/style.css">
+   </head>
+   <body style="font-family: Helvetica, sans-serif; font-size: 18px;">
+      <div style="text-align:center; vertical-align:middle;margin-top:25vh;margin-left: 37vw;margin-right: 37vw;">
+         <div style="text-align:center"><a target="_blank" href="https://www.megaitaliamedia.com/it/"><image class="logo" title="Mega Italia Mega | eLearning company"  src="../static/megaitaliamedia.png" alt="MEGAITALIAMEDIA"></image></a></div>
+            <form action = "http://localhost:5000/delete/{{user}}" method = post>
+                <fieldset class="boxTitle"><h2> Cancellazione Account: <i style="font-size: 30px;">{{user}}</i></h2></fieldset>
+                <fieldset style="background-color:#EBEBEB; padding-top: 3vh; padding-right: 4vw; padding-left: 4vw; min-width: 250px; border-color: black;">
+                <div>{{form.submit}}</div>
+                <div>{{form.backButton}}</div>
+                </fieldset>
+                <!-- Gestione errori -->
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                <fieldset class="boxError">
+                    {% for message in messages %}
+                    <div style="font-size: 20px; font-weight:bold">Errore: {{ message }}</div>
+                    {% endfor %}
+                </fieldset>
+                {% endif %}
+                {% endwith %}
+            </form>
+      </div>
+   </body>
+</html>

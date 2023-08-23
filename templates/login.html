@@ -1,0 +1,95 @@
+<!doctype html>
+<html style="height:100%;background-color:#FFFFFF">
+    <head>
+        <script>
+            function showPassword(){
+                var field = document.getElementById("password")
+                var eye = document.getElementById("eye")
+                if (field.type === "password") {
+                    field.type = "text";
+                    eye.className = "fa fa-eye-slash"
+                } else {
+                    eye.className = "fa fa-eye"
+                    field.type = "password";
+                }
+            }   
+        </script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style>
+        .boxTitle{
+            min-width: 300px;
+            text-align:center;
+            background-color:#D80404;
+            color:white;
+            border-color: black;
+            padding: 0.5vh 0.5vw 0.5vh 0.5vw;
+            font-weight: bold;
+         }
+
+         .inputField{
+            background-color:#D5D5D5;
+            border-radius: 4px;
+            margin-top: -3vh;
+            margin-bottom: 4vh;
+            padding-top: 0.5vh;
+            padding-bottom: 0.5vh;
+            font-size: 18px;
+        }
+
+         .button {
+            background-color: #212429;
+            color: white;
+            font-weight:bold;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-width: 2px;
+            border-color: black;
+            border-radius: 8px;
+            font-weight: bold;
+            margin-bottom: 4vh;
+         }
+
+         .boxError{
+            background-color:#fcd703;
+            border-color: black;
+         }
+
+         .logo{
+            width: 24vw;
+            height:auto;
+         }
+        </style>
+        <title>Login</title>
+     </head>
+   <body style="font-family: Helvetica, sans-serif;">
+    	<div style="text-align:center; vertical-align:middle;margin-top:25vh;margin-left: 37vw;margin-right: 37vw;">
+            <div style="text-align:center"><a target="_blank" href="https://www.megaitaliamedia.com/it/"><image class="logo" title="Mega Italia Mega | eLearning company"  src="../static/megaitaliamedia.png" alt="MEGAITALIAMEDIA"></image></a></div>
+            <form action = "http://localhost:5000/login" method = post style="display: inline;">
+                <fieldset class="boxTitle"><h2>LOGIN</h2></fieldset>
+                    <fieldset style="background-color:#EBEBEB; padding-top: 3vh; padding-right: 4vw; padding-left: 4vw; min-width: 250px; border-color: black;">
+                        <div>{{logForm.username}}</div>
+                        <div>{{logForm.password}}</div>
+                        <div style="font-size: 18px;">Show password <i id="eye" onClick=showPassword() class="fa fa-eye"></i></div>
+                        <div style="margin-top: 4vh">{{logForm.submit}}</div>
+                        <div><a href="http://localhost:5000/subscribe" >Non hai un account? Registrati! </a></div>
+                        <div style="padding-top:2vh;padding-bottom: 2vh;"><a href="http://localhost:5000/tutorial" >Ti senti perso? Vai al Tutorial!</a></div>
+                    </fieldset>
+                    <!-- Gestione errori -->
+                    {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                        <fieldset class="boxError">
+                            {% for message in messages %}
+                                <div style="font-size: 20px; font-weight:bold;">Errore: {{ message }}</div>
+                            {% endfor %}
+                        </fieldset>
+                        {% endif %}
+                    {% endwith %}
+            </form>
+        </div>
+    </body>
+</html>

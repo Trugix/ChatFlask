@@ -1,0 +1,89 @@
+<!doctype html>
+<html style="height:100%;background-color:#FFFFFF">
+   <script>
+      const scrollingElement = (document.scrollingElement || document.body);
+      const scrollToBottom = () => {scrollingElement.scrollTop = scrollingElement.scrollHeight;}
+      function disableSend()
+      {
+         button = document.getElementById("send")
+         button.disabled = true
+      }
+   </script>
+   <head>
+      <link rel="stylesheet" href="../static/style.css">
+      <title>Chat</title>
+   </head>
+   <body onLoad=scrollToBottom() style="font-family: Segoe UI, Helvetica, Arial, sans-serif;background-repeat: no-repeat;background-size: cover;background-position:center;">
+      <form class="boxInput" action = "http://localhost:5000/chatText/{{history.username}}" method = post onsubmit=disableSend();>
+      <a target="_blank" href="https://www.megaitaliamedia.com/it/"><image style="width:20vw;margin: 2vh;" title="Mega Italia Mega | eLearning company"  src="../static/mimchatlogo.png" alt="MEGAITALIAMEDIA"></image></a>
+      <div style="float: right;margin-right:2vw">
+         <br>
+         {{ form.logOutButton }}
+      </div>
+      <div>
+         <fieldset class="boxTitle"><div style = "-webkit-text-stroke: 1px black;font-size: 60px; color:white; text-align: center;font-weight:900;">CHAT</div></fieldset>
+         {% if history.messagesLen != 0%}
+         <fieldset style="background-color:#EBEBEB; border-color: black;">
+            {% for i in range(0, history.messagesLen) %}
+         
+                  {% if i%2 == 0:  %}
+                  <div style="text-align: right;">
+                     <fieldset class="boxUser"> 
+                        <legend style="position: absolute; margin-top:-3.5vh; margin-left:-0.5vw;"><b style="font-size:20px;color:black">{{history.username}}</b></legend>
+                        <p style = "white-space: pre-line; font-size: 18px;font-weight:450;color:white" align="left">{{ history.messages[i] }}</p>
+                     </fieldset>
+                  </div>
+                  {% else %}
+                  <div style="text-align: left;">
+                     <fieldset class="boxBot"> 
+                        <legend style="position: absolute; margin-top:-3.5vh;"><b style="font-size:20px;color:black">Assistente</b></legend>
+                        <p style = "white-space: pre-line; font-size: 18px;font-weight:450;color:white"  align="left">{{ history.messages[i] }}</p>
+                     </fieldset>
+                  </div>
+                  {% endif %}
+                  <br>
+            {% endfor %}
+         </fieldset>
+         {% endif %}
+      </div>
+      <div class="boxInput" action = "http://localhost:5000/chatText/{{history.username}}" method = post onsubmit=disableSend();>
+         <fieldset  style="background-color:#D80404; border-color: black;">
+            {{ form.hidden_tag() }}
+            
+            <div style = "font-size:20px; font-weight:bold;">
+               <div style="float: left;">
+                  <br>
+                  {{ form.userPrompt }}
+               </div>
+               <div style="float: left;margin-left:2vw">
+                  <br>
+                  {{ form.modeSelect }}
+               </div>
+               <div style="float: left;margin-left:2vw">
+                  <br>
+                  {{ form.submit }}
+               </div>
+               <div style="float: left;margin-left:2vw">
+                  <br>
+                  {{ form.clearButton }}
+               </div>
+               <div style="float: right;margin-right:2vw">
+                  <br>
+                  {{ form.backButton }}
+               </div>
+            </div>
+         </fieldset>
+         <!-- Gestione errori -->
+         {% with messages = get_flashed_messages() %}
+         {% if messages %}
+         <fieldset class="boxError">
+           {% for message in messages %}
+             <div style="font-size: 20px; font-weight:bold">Errore: {{ message }}</div>
+           {% endfor %}
+         </fieldset>
+         {% endif %}
+        {% endwith %}
+      </div>
+      </form>
+   </body>
+</html>

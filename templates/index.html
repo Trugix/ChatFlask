@@ -1,0 +1,21 @@
+<!doctype html>
+<html style="height:100%;background-color:#ffffff">
+   <script>
+   </script>
+   <head>
+      <title>Indice</title>
+      <link rel="stylesheet" href="../static/style.css">
+   </head>
+   <body style="font-family: Helvetica, sans-serif; font-size: 18px;">
+      <div style="text-align:center; vertical-align:middle;margin-top:25vh;margin-left: 37vw;margin-right: 37vw;">
+         <div style="text-align:center"><a target="_blank" href="https://www.megaitaliamedia.com/it/"><image class="logo" title="Mega Italia Mega | eLearning company"  src="../static/megaitaliamedia.png" alt="MEGAITALIAMEDIA"></image></a></div>
+            <fieldset class="boxTitle"><h2>Benvenuto <i style="font-size: 30px;">{{user}}</i>!</h2></fieldset>
+            <fieldset style="background-color:#EBEBEB; padding-top: 3vh; padding-right: 4vw; padding-left: 4vw; min-width: 250px; border-color: black;">
+               <div><a  href="http://localhost:5000/chatText/{{user}}" class="button">Chat testuale</a></div>
+               <div><a  href="http://localhost:5000/imageGen/{{user}}" class="button">Generazione immagini</a></div>
+               <div><a  href="http://localhost:5000/login" class="button" style="background-color:#D80404; margin-top:3vh">LOG OUT</a></div>
+               <div><a  href="http://localhost:5000/delete/{{user}}" class="button" style="background-color:#D80404; margin-top:3vh">Cancellazione utente</a></div>
+            </fieldset>
+      </div>
+   </body>
+</html>

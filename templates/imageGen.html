@@ -1,0 +1,104 @@
+<!doctype html>
+<html style="height:100%;background-color:#FFFFFF">
+   <script>
+      const scrollingElement = (document.scrollingElement || document.body);
+      const scrollToBottom = () => {scrollingElement.scrollTop = scrollingElement.scrollHeight;}
+      function disableSend()
+      {
+         button = document.getElementById("send")
+         button.disabled = true
+      }
+   </script>
+   <head>
+      <link rel="stylesheet" href="../static/style.css">
+      <title>Image generation</title>
+   </head>
+   <body onLoad=scrollToBottom() style="font-family: Segoe UI, Helvetica, Arial, sans-serif;background-repeat: no-repeat;background-size: cover;background-position:center;">
+      <form class="boxInput" action = "http://localhost:5000/imageGen/{{user}}" method = post onsubmit="this.submit.disabled = true;">
+      <a target="_blank" href="https://www.megaitaliamedia.com/it/"><image style="width:20vw;margin: 2vh;" title="Mega Italia Mega | eLearning company"  src="../static/mimchatlogo.png" alt="MEGAITALIAMEDIA"></image></a>
+      <div style="float: right;margin-right:2vw">
+         <br>
+         {{ form.logOutButton }}
+      </div>
+      <div>
+         <fieldset class="boxTitle"><div style = "-webkit-text-stroke: 1px black;font-size: 60px; color:white; text-align: center;font-weight:900;">IMAGES</div></fieldset>
+         {% if userPrompt != "" %}
+         <div style="text-align: right;">
+            <fieldset class="boxUser"> 
+               <div style="text-align: left;">
+                  <div style = "font-size: 18px;font-weight:450;color:white; margin-left: 3vw; margin-bottom: 1vh; margin-top: 1vh"  align="left">
+                     <b>{{user}}:</b> {{userPrompt}}
+                  </div>
+               </div>
+               {% if improvedPrompt != "" %}
+                  <div style="text-align: left;">
+                     <div style = "font-size: 18px;font-weight:450;color:white; margin-left: 3vw; margin-bottom: 1vh; margin-top: 1vh"  align="left">
+                        <b>L'assistente ha migliorato il prompt in: </b>{{improvedPrompt}}
+                     </div>
+                  </div>
+               {% endif %}
+            </fieldset>
+         </div>
+            {% if form.imagesURLsLen != 0 %}
+            <fieldset class="boxBot">
+               {% for i in range(0, form.imagesURLsLen) %}
+                     <div style="text-align: center; display:inline-block">
+                        <div style = "font-size: 18px;font-weight:450;color:white; margin-left: 3vw;"  align="left">
+                           <image src="{{form.imagesURLs[i]}}">
+                        </div>
+                     </div>
+               {% endfor %}
+            </fieldset>
+            {% endif %}
+         </fieldset>
+         {% endif %}
+         <div class="boxInput">
+            <fieldset  style="background-color:#D80404; border-color: black;">
+               {{ form.hidden_tag() }}
+               
+               <div style = "font-size:20px; font-weight:bold;">
+                  <div style="float: left;">
+                     <br>
+                     {{ form.userPrompt }}
+                  </div>
+                  <div style="float: left;margin-left:2vw">
+                     <br>
+                     {{ form.promptAssist }}
+                  </div>
+                  <div style="float: left;margin-left:2vw">
+                     <br>
+                     <div style="float: left;margin-left:-1.7vw;margin-top:1.2vh">Prompt assistito</div> 
+                  </div>
+                  <div style="float: left;margin-left:2vw">
+                     <br>
+                     {{ form.numberSelect }}
+                  </div>
+                  <div style="float: left;margin-left:2vw">
+                    <br>
+                    {{ form.qualitySelect }}
+                 </div>
+                  <div style="float: left;margin-left:2vw">
+                     <br>
+                     {{ form.submit }}
+                  </div>
+                  <div style="float: right;margin-right:2vw">
+                     <br>
+                     {{ form.backButton }}
+                  </div>
+               </div>
+            </fieldset>
+            <!-- Gestione errori -->
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <fieldset class="boxError">
+              {% for message in messages %}
+                <div style="font-size: 20px; font-weight:bold">Errore: {{ message }}</div>
+              {% endfor %}
+            </fieldset>
+            {% endif %}
+           {% endwith %}
+         </div>
+      </form>
+      </div>
+   </body>
+</html>
