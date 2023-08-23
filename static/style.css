@@ -1,0 +1,181 @@
+.button {
+background-color: #212429;
+color: white;
+font-weight:bold;
+padding: 15px 32px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;
+margin: 4px 2px;
+cursor: pointer;
+border-width: 2px;
+border-color: black;
+border-radius: 8px;
+font-weight: bold;
+}
+
+.logOutButton {
+background-color: #D80404;
+color: white;
+font-weight:bold;
+padding: 15px 32px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;
+margin: 4px 2px;
+cursor: pointer;
+border-width: 2px;
+border-color: black;
+border-radius: 8px;
+font-weight: bold;
+}
+
+.select{
+background-color: #212429;
+color: white;
+font-weight:bold;
+padding: 15px 20px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;
+margin: 4px 4px;
+border-width: 2px;
+border-color: black;
+border-radius: 8px;
+font-weight: bold;
+}
+
+.textarea{
+font-family: Helvetica, sans-serif;
+font-weight:400;
+background-color: #D5D5D5;
+height:5rem; 
+width:50vw; 
+resize:none;
+font-size: 16px;
+border-width: 2px;
+border-color: black;
+border-radius: 8px;
+}
+
+.boxUser{
+display:inline-block;
+position: relative;
+margin-left:30vw;
+margin-top:2.5vh;
+background-color:#646C7D;
+border-radius: 8px;
+border-width: 2px;
+border-color: black;
+}
+
+.boxBot{
+display:inline-block;
+position: relative;
+margin-top: 2vh;
+margin-right:30vw;
+background-color:#212429;
+border-radius: 8px;
+border-width: 2px;
+border-color: black;
+}
+
+.boxError{
+background-color:#fcd703;
+}
+
+.boxTitle{
+background-color:#D80404;
+border-color: black;
+color: white
+}
+
+.boxInput{
+position: sticky;
+bottom: 0;
+}
+
+
+/* i tre stili "input" sono per creare una custom checkbox */
+input[type="checkbox"] {
+-webkit-appearance: none;
+appearance: none;
+background-color: white;
+margin-top: 2vh;
+
+font: inherit;
+color: black;
+width: 1.15em;
+height: 1.15em;
+border: 0.15em solid black;
+border-radius: 0.15em;
+transform: translateY(-0.075em);
+
+display: grid;
+place-content: center;
+}
+
+input[type="checkbox"]::before {
+content: "";
+width: 0.65em;
+height: 0.65em;
+clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+transform: scale(0);
+transform-origin: bottom left;
+transition: 120ms transform ease-in-out;
+box-shadow: inset 1em 1em var(--form-control-color);
+/* Windows High Contrast Mode */
+background-color: CanvasText;
+}
+
+input[type="checkbox"]:checked::before {
+transform: scale(1);
+}
+
+a.button {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+    
+    width:10vw;
+
+    background-color: #212429;
+    color: white;
+    font-weight:bold;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-width: 2px;
+    border-color: black;
+    border-radius: 8px;
+    font-weight: bold;
+ }
+
+ .logo{
+    width: 24vw;
+    height:auto;
+ }
+ 
+ .deleteButton {
+    background-color:#D80404;
+    color: white;
+    font-weight:bold;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-width: 2px;
+    border-color: black;
+    border-radius: 8px;
+    font-weight: bold;
+ }
